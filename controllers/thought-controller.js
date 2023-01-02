@@ -16,7 +16,7 @@ const thoughtController = {
             })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                  res.status(404).json({ message: 'No Thought found with this id!' });
+                  res.status(404).json({ message: 'could not find Thought with this id!' });
                   return;
                 }
                 console.log(dbThoughtData);
@@ -48,7 +48,7 @@ const thoughtController = {
     )
     .then(dbThoughtData => {
         if (!dbThoughtData) {
-          res.status(404).json({ message: 'No Thought found with this id!' });
+          res.status(404).json({ message: 'could not find Thought with this id!' });
           return;
         }
         res.json(dbThoughtData);
@@ -70,7 +70,7 @@ const thoughtController = {
       Thought.findOneAndDelete({ _id: params.thoughtId})
       .then(deletedReaction => {
           if (!deletedReaction) {
-            return res.status(404).json({ message: 'No Reaction with this id!' });
+            return res.status(404).json({ message: 'could not find Reaction with this id!' });
           }
           return User.findOneAndUpdate(
               { _id: body.userId },
@@ -78,7 +78,7 @@ const thoughtController = {
               { new: true }
           );
   })
-  .then(res.json({message: 'Thought deleted!'}))
+  .then(res.json({message: 'Thought succesfully deleted!'}))
     .catch(err => res.json(err));
   },
 };

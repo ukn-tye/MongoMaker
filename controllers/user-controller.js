@@ -1,7 +1,7 @@
 const { Thought, User } = require("../models");
 
 const userController = {
-    //get all Users
+    
     getAllUsers(req, res) {
         User.find({})
             .select('-__v')
@@ -53,7 +53,7 @@ const userController = {
             res.sendStatus(400);
         });
     },
-    //add user to db
+   
     createUser({ body }, res) {
         console.log(body);
         User.create(body)
